@@ -1,14 +1,20 @@
 import "../../css/reset.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import HeaderPage from "../HeaderPage";
 import FilmPage from "../FilmPage";
 import SessionPage from "../SessionPage";
+import HeaderPage from "../HeaderPage";
 
 export default function CineFlex() {
   return (
     <div className="container">
       <HeaderPage />
-      <FilmPage />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<FilmPage />}></Route>
+          <Route path="/sessoes/:idFilme" element={<SessionPage />}></Route>
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
