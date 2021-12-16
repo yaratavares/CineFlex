@@ -13,7 +13,10 @@ export default function FilmPage() {
       setImageFilm(answer.data);
     });
   }, []);
-  console.log(imageFilm);
+
+  if (!imageFilm || imageFilm === undefined) {
+    return <h1>Carregando</h1>;
+  }
 
   return (
     <div className="filmPage">
