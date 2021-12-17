@@ -19,10 +19,6 @@ export default function FilmPage() {
     return <h1>Carregando</h1>;
   }
 
-  function clickFilm(id) {
-    console.log(id);
-  }
-
   return (
     <>
       <div className="filmPage">
@@ -31,9 +27,9 @@ export default function FilmPage() {
         </div>
         <div className="listFilms">
           {imageFilm.map((image) => (
-            <Link to={`/sessoes/${image.id}`}>
+            <Link to={`/sessoes/${image.id}`} key={image.id + "image"}>
               <div className="boxFilm">
-                <div className="imageFilm" onClick={() => clickFilm(image)}>
+                <div className="imageFilm">
                   <img src={image.posterURL} />
                 </div>
               </div>

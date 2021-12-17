@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 
 import "./style.css";
@@ -13,14 +13,15 @@ export default function SessionPage() {
       `https://mock-api.driven.com.br/api/v4/cineflex/movies/${idFilme}/showtimes`
     );
     promisse.then((answer) => {
-      setDaySession(answer.data.days);
+      setDaySession(answer.data);
     });
   }, []);
+
+  console.log(daySession);
 
   if (!daySession || daySession === undefined) {
     return <h1>Carregando</h1>;
   }
-  console.log(daySession);
 
   return (
     <>
@@ -29,19 +30,31 @@ export default function SessionPage() {
           <p>Selecione o horário</p>
         </div>
         <div className="sessionsFilm">
-          {daySession.map((day) => (
-            <div className="session" key={day.id}>
+          {daySession.days.map((day) => (
+            <div className="session" key={day.id + "session"}>
               <div className="daySession">
                 <p>{day.weekday + " - " + day.date}</p>
                 <div className="schedules">
                   {day.showtimes.map((time) => (
-                    <button>{time.name}</button>
+                    <Link to={`/assentos/${time.id}`}>
+                      <button>{time.name}</button>
+                    </Link>
                   ))}
                 </div>
               </div>
             </div>
           ))}
         </div>
+        <footer>
+          <div className="boxImage">
+            <div className="littleImage">
+              <img src={daySession.posterURL}></img>
+            </div>
+          </div>
+          <div className="informationFilm">
+            <p>{daySession.title}</p>
+          </div>
+        </footer>
       </div>
     </>
   );
