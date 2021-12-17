@@ -22,7 +22,7 @@ export default function SeatPage() {
     return <h1>Carregando</h1>;
   }
 
-  function click(isAvaible, id) {
+  function clickSeat(isAvaible, id) {
     if (!isAvaible) {
       alert("Esse assento não está disponível");
     } else if (seatsIds.includes(id)) {
@@ -33,10 +33,17 @@ export default function SeatPage() {
     } else {
       setSeatsIds([...seatsIds, id]);
     }
-    console.log(id);
   }
 
-  console.log(seatsIds);
+  function clickFinal() {
+    const request = { ids: seatsIds, name: "Fulano", cpf: "12345678900" };
+
+    const promisse = axios.post(
+      "https://mock-api.driven.com.br/api/v4/cineflex/seats/book-many",
+      request
+    );
+    promisse.then(() => console.log("proxima pagina"));
+  }
 
   return (
     <>
@@ -49,7 +56,7 @@ export default function SeatPage() {
             <Seat
               cor={seat.isAvailable}
               key={seat.id + "seat"}
-              onClick={() => click(seat.isAvailable, seat.id)}
+              onClick={() => clickSeat(seat.isAvailable, seat.id)}
               click={seatsIds}
               id={seat.id}
             >
@@ -82,7 +89,7 @@ export default function SeatPage() {
             <input placeholder="Digite seu CPF..."></input>
           </div>
         </div>
-        <div className="reserve">
+        <div className="reserve" onClick={clickFinal}>
           <button>Reservar assento(s)</button>
         </div>
       </div>
