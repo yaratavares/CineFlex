@@ -1,10 +1,12 @@
 import "./style.css";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import styled from "styled-components";
 import axios from "axios";
 
 export default function SeatPage() {
   const [filmSeat, setFilmSeat] = useState();
+  const [seatsIds, setSeatsIds] = useState([]);
   const { idSessao } = useParams();
 
   useEffect(() => {
@@ -12,7 +14,6 @@ export default function SeatPage() {
       `https://mock-api.driven.com.br/api/v4/cineflex/showtimes/${idSessao}/seats`
     );
     promisse.then((answer) => {
-      console.log(answer.data);
       setFilmSeat(answer.data);
     });
   }, []);
@@ -20,6 +21,22 @@ export default function SeatPage() {
   if (!filmSeat || filmSeat === undefined) {
     return <h1>Carregando</h1>;
   }
+
+  function click(isAvaible, id) {
+    if (!isAvaible) {
+      alert("Esse assento não está disponível");
+    } else if (seatsIds.includes(id)) {
+      const index = seatsIds.indexOf(id);
+      const arr = [...seatsIds];
+      arr.splice(index, 1);
+      setSeatsIds(arr);
+    } else {
+      setSeatsIds([...seatsIds, id]);
+    }
+    console.log(id);
+  }
+
+  console.log(seatsIds);
 
   return (
     <>
@@ -29,14 +46,15 @@ export default function SeatPage() {
         </div>
         <div className="boxSeats">
           {filmSeat.seats.map((seat) => (
-            <div
-              className={`seat ${
-                seat.isAvailable ? "available" : "unavailable"
-              }`}
+            <Seat
+              cor={seat.isAvailable}
               key={seat.id + "seat"}
+              onClick={() => click(seat.isAvailable, seat.id)}
+              click={seatsIds}
+              id={seat.id}
             >
               {seat.name}
-            </div>
+            </Seat>
           ))}
         </div>
         <div className="boxModelSeats">
@@ -84,3 +102,22 @@ export default function SeatPage() {
     </>
   );
 }
+
+const Seat = styled.div`
+  height: 26px;
+  width: 26px;
+  background-color: #c3cfd9;
+  border: 1px solid #808f9d;
+  border-radius: 50px;
+  font-size: 11px;
+
+  background-color: ${({ cor, click, id }) =>
+    cor ? (click.includes(id) ? "#8dd7cf" : "#c3cfd9") : "#fbe192"};
+  border: 1px solid
+    ${({ cor, click, id }) =>
+      cor ? (click.includes(id) ? "#1aae9e" : "#7b8b99") : "#f7c52b"};
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;

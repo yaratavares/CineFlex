@@ -17,8 +17,6 @@ export default function SessionPage() {
     });
   }, []);
 
-  console.log(daySession);
-
   if (!daySession || daySession === undefined) {
     return <h1>Carregando</h1>;
   }
@@ -35,9 +33,9 @@ export default function SessionPage() {
               <div className="daySession">
                 <p>{day.weekday + " - " + day.date}</p>
                 <div className="schedules">
-                  {day.showtimes.map((time) => (
+                  {day.showtimes.map((time, index) => (
                     <Link to={`/assentos/${time.id}`}>
-                      <button>{time.name}</button>
+                      <button key={index + time.id}>{time.name}</button>
                     </Link>
                   ))}
                 </div>
