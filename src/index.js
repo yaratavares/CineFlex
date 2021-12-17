@@ -1,8 +1,4 @@
 import ReactDOM from "react-dom";
-import CineFlex from "./components/CineFlex";
-
-function App() {
-  return <CineFlex />;
-}
+import App from "./components/App";
 
 ReactDOM.render(<App />, document.querySelector(".root"));

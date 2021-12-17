@@ -1,12 +1,14 @@
 import "./style.css";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import styled from "styled-components";
 import axios from "axios";
 
-export default function SeatPage() {
+export default function SeatPage({ request, setRequest }) {
   const [filmSeat, setFilmSeat] = useState();
   const [seatsIds, setSeatsIds] = useState([]);
+  const [inputCpf, setInputCpf] = useState();
+  const [inputName, setInputName] = useState();
   const { idSessao } = useParams();
 
   useEffect(() => {
@@ -22,27 +24,36 @@ export default function SeatPage() {
     return <h1>Carregando</h1>;
   }
 
-  function clickSeat(isAvaible, id) {
+  function clickSeat(isAvaible, number) {
     if (!isAvaible) {
       alert("Esse assento não está disponível");
-    } else if (seatsIds.includes(id)) {
-      const index = seatsIds.indexOf(id);
+    } else if (seatsIds.includes(number)) {
+      const index = seatsIds.indexOf(number);
       const arr = [...seatsIds];
       arr.splice(index, 1);
       setSeatsIds(arr);
     } else {
-      setSeatsIds([...seatsIds, id]);
+      setSeatsIds([...seatsIds, number]);
     }
   }
 
   function clickFinal() {
-    const request = { ids: seatsIds, name: "Fulano", cpf: "12345678900" };
+    const axiosForPost = { ids: seatsIds, name: inputName, cpf: inputCpf };
 
     const promisse = axios.post(
       "https://mock-api.driven.com.br/api/v4/cineflex/seats/book-many",
-      request
+      axiosForPost
     );
-    promisse.then(() => console.log("proxima pagina"));
+
+    setRequest({
+      ...axiosForPost,
+      movie: filmSeat.movie.title,
+      date: filmSeat.day.date,
+      time: filmSeat.name,
+    });
+
+    promisse.then(() => alert("Prepare a pipoca!"));
+    promisse.catch(() => alert("Ocorreu um erro, tente novamente"));
   }
 
   return (
@@ -55,10 +66,10 @@ export default function SeatPage() {
           {filmSeat.seats.map((seat) => (
             <Seat
               cor={seat.isAvailable}
-              key={seat.id + "seat"}
-              onClick={() => clickSeat(seat.isAvailable, seat.id)}
+              key={seat.id}
+              onClick={() => clickSeat(seat.isAvailable, seat.name)}
               click={seatsIds}
-              id={seat.id}
+              number={seat.name}
             >
               {seat.name}
             </Seat>
@@ -82,16 +93,24 @@ export default function SeatPage() {
         <div className="boxInputs">
           <div className="dataInput">
             <p>Nome do comprador:</p>
-            <input placeholder="Digite seu nome..."></input>
+            <input
+              placeholder="Digite seu nome..."
+              onChange={(e) => setInputName(e.target.value)}
+            ></input>
           </div>
           <div className="dataInput">
             <p>CPF do comprador:</p>
-            <input placeholder="Digite seu CPF..."></input>
+            <input
+              placeholder="Digite seu CPF..."
+              onChange={(e) => setInputCpf(e.target.value)}
+            ></input>
           </div>
         </div>
-        <div className="reserve" onClick={clickFinal}>
-          <button>Reservar assento(s)</button>
-        </div>
+        <Link to="/sucesso">
+          <div className="reserve" onClick={clickFinal}>
+            <button>Reservar assento(s)</button>
+          </div>
+        </Link>
       </div>
       <footer>
         <div className="boxImage">
@@ -118,11 +137,11 @@ const Seat = styled.div`
   border-radius: 50px;
   font-size: 11px;
 
-  background-color: ${({ cor, click, id }) =>
-    cor ? (click.includes(id) ? "#8dd7cf" : "#c3cfd9") : "#fbe192"};
+  background-color: ${({ cor, click, number }) =>
+    cor ? (click.includes(number) ? "#8dd7cf" : "#c3cfd9") : "#fbe192"};
   border: 1px solid
-    ${({ cor, click, id }) =>
-      cor ? (click.includes(id) ? "#1aae9e" : "#7b8b99") : "#f7c52b"};
+    ${({ cor, click, number }) =>
+      cor ? (click.includes(number) ? "#1aae9e" : "#7b8b99") : "#f7c52b"};
 
   display: flex;
   align-items: center;

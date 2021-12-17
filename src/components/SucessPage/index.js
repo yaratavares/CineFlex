@@ -1,8 +1,8 @@
+import { Link } from "react-router-dom";
 import "./style.css";
 
-export default function SucessPage() {
-  const request = { ids: [1, 2, 3], name: "Fulano", cpf: "12345678900" };
-
+export default function SucessPage({ request }) {
+  console.log(request);
   return (
     <div className="sucessPage">
       <div className="title">
@@ -15,16 +15,16 @@ export default function SucessPage() {
       <div className="dadosAPI">
         <p className="littleTitle">Filme e sessão</p>
         <p className="data">
-          Enola Holmes
+          {request.movie}
           <br />
-          24/06/2021 15:00
+          {request.date + " " + request.time}
         </p>
       </div>
       <div>
         <p className="littleTitle">Ingressos</p>
         <div className="data">
           {request.ids.map((seat) => (
-            <p>Assento {seat}</p>
+            <p key={seat}>Assento {seat}</p>
           ))}
         </div>
       </div>
@@ -36,9 +36,11 @@ export default function SucessPage() {
           CPF: {request.cpf}
         </p>
       </div>
-      <div className="buttonHome">
-        <button>Voltar pra Home</button>
-      </div>
+      <Link to="/">
+        <div className="buttonHome">
+          <button>Voltar pra Home</button>
+        </div>
+      </Link>
     </div>
   );
 }
