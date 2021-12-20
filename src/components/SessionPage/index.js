@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import axios from "axios";
+import LoadingPage from "../LoadingPage";
 
 import "./style.css";
 
-export default function SessionPage() {
+export default function SessionPage({ setPageControl }) {
   const [daySession, setDaySession] = useState();
   const { idFilme } = useParams();
 
@@ -14,11 +15,12 @@ export default function SessionPage() {
     );
     promisse.then((answer) => {
       setDaySession(answer.data);
+      setPageControl("session");
     });
   }, []);
 
   if (!daySession || daySession === undefined) {
-    return <h1>Carregando</h1>;
+    return <LoadingPage />;
   }
 
   return (
@@ -43,17 +45,17 @@ export default function SessionPage() {
             </div>
           ))}
         </div>
-        <footer>
-          <div className="boxImage">
-            <div className="littleImage">
-              <img src={daySession.posterURL}></img>
-            </div>
-          </div>
-          <div className="informationFilm">
-            <p>{daySession.title}</p>
-          </div>
-        </footer>
       </div>
+      <footer>
+        <div className="boxImage">
+          <div className="littleImage">
+            <img src={daySession.posterURL}></img>
+          </div>
+        </div>
+        <div className="informationFilm">
+          <p>{daySession.title}</p>
+        </div>
+      </footer>
     </>
   );
 }

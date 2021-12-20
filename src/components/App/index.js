@@ -10,14 +10,21 @@ import SucessPage from "../SucessPage";
 
 export default function App() {
   const [requestObject, setRequestObject] = useState({});
+  const [pageControl, setPageControl] = useState();
 
   return (
     <div className="container">
-      <HeaderPage />
       <BrowserRouter>
+        <HeaderPage pageControl={pageControl} />
         <Routes>
-          <Route path="/" element={<FilmPage />}></Route>
-          <Route path="/sessoes/:idFilme" element={<SessionPage />}></Route>
+          <Route
+            path="/"
+            element={<FilmPage setPageControl={setPageControl} />}
+          ></Route>
+          <Route
+            path="/sessoes/:idFilme"
+            element={<SessionPage setPageControl={setPageControl} />}
+          ></Route>
           <Route
             path="/assentos/:idSessao"
             element={
@@ -26,7 +33,7 @@ export default function App() {
           ></Route>
           <Route
             path="/sucesso"
-            element={<SucessPage request={requestObject} />}
+            element={<SucessPage page="sucesso" request={requestObject} />}
           ></Route>
         </Routes>
       </BrowserRouter>

@@ -1,8 +1,10 @@
-import "./style.css";
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import styled from "styled-components";
 import axios from "axios";
+
+import LoadingPage from "../LoadingPage";
+import "./style.css";
 
 export default function SeatPage({ request, setRequest }) {
   const [filmSeat, setFilmSeat] = useState();
@@ -21,7 +23,7 @@ export default function SeatPage({ request, setRequest }) {
   }, []);
 
   if (!filmSeat || filmSeat === undefined) {
-    return <h1>Carregando</h1>;
+    return <LoadingPage />;
   }
 
   function clickSeat(isAvaible, number) {
@@ -49,8 +51,13 @@ export default function SeatPage({ request, setRequest }) {
       ...axiosForPost,
       movie: filmSeat.movie.title,
       date: filmSeat.day.date,
+      weekday: filmSeat.day.weekday,
       time: filmSeat.name,
     });
+
+    if (!request || request === undefined) {
+      return <LoadingPage />;
+    }
 
     promisse.then(() => alert("Prepare a pipoca!"));
     promisse.catch(() => alert("Ocorreu um erro, tente novamente"));

@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import "./style.css";
 
 export default function SucessPage({ request }) {
-  console.log(request);
   return (
     <div className="sucessPage">
       <div className="title">

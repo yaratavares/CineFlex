@@ -17,4 +17,18 @@ header h1 {
   font-size: 34px;
   font-weight: 400;
   color: #e8833a;
+
+  position: relative;
+}
+
+header button {
+  margin-left: 10px;
+  background: #c3cfd9;
+  color: #293845;
+
+  border: none;
+  font-size: 20px;
+
+  position: absolute;
+  left: 0;
 }

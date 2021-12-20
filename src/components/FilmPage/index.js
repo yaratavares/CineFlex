@@ -3,7 +3,9 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import "./style.css";
 
-export default function FilmPage() {
+import LoadingPage from "../LoadingPage";
+
+export default function FilmPage({ setPageControl }) {
   const [imageFilm, setImageFilm] = useState();
 
   useEffect(() => {
@@ -12,11 +14,12 @@ export default function FilmPage() {
     );
     promisse.then((answer) => {
       setImageFilm(answer.data);
+      setPageControl("/");
     });
   }, []);
 
   if (!imageFilm || imageFilm === undefined) {
-    return <h1>Carregando</h1>;
+    return <LoadingPage />;
   }
 
   return (
