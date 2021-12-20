@@ -30,10 +30,22 @@ export default function SeatPage({ request, setRequest }) {
     if (!isAvaible) {
       alert("Esse assento não está disponível");
     } else if (seatsIds.includes(number)) {
-      const index = seatsIds.indexOf(number);
-      const arr = [...seatsIds];
-      arr.splice(index, 1);
-      setSeatsIds(arr);
+      if (inputName || inputCpf) {
+        const answer = window.confirm("Gostaria de remover esse assento?");
+        if (answer) {
+          const index = seatsIds.indexOf(number);
+          const arr = [...seatsIds];
+          arr.splice(index, 1);
+          setSeatsIds(arr);
+          setInputName("");
+          setInputCpf("");
+        }
+      } else {
+        const index = seatsIds.indexOf(number);
+        const arr = [...seatsIds];
+        arr.splice(index, 1);
+        setSeatsIds(arr);
+      }
     } else {
       setSeatsIds([...seatsIds, number]);
     }
@@ -74,9 +86,9 @@ export default function SeatPage({ request, setRequest }) {
             <Seat
               cor={seat.isAvailable}
               key={seat.id}
-              onClick={() => clickSeat(seat.isAvailable, seat.name)}
+              onClick={() => clickSeat(seat.isAvailable, seat.id)}
               click={seatsIds}
-              number={seat.name}
+              number={seat.id}
             >
               {seat.name}
             </Seat>
