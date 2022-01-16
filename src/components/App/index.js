@@ -1,6 +1,6 @@
 import "../../css/reset.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useState } from "react/cjs/react.development";
+import { useState } from "react";
 
 import FilmPage from "../FilmPage";
 import SessionPage from "../SessionPage";

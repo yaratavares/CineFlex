@@ -1,6 +1,5 @@
 import "./style.css";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
 
 export default function HeaderPage({ pageControl }) {
   let navigate = useNavigate();

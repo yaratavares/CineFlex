@@ -36,8 +36,8 @@ export default function SessionPage({ setPageControl }) {
                 <p>{day.weekday + " - " + day.date}</p>
                 <div className="schedules">
                   {day.showtimes.map((time, index) => (
-                    <Link to={`/assentos/${time.id}`}>
-                      <button key={index + time.id}>{time.name}</button>
+                    <Link to={`/assentos/${time.id}`} key={index + time.id}>
+                      <button>{time.name}</button>
                     </Link>
                   ))}
                 </div>
