@@ -32,8 +32,8 @@ Nono projeto desenvolvido no curso de Full-Stack Developer na [Driven Education]
   - [x] assim que o usuário entra no site são listados todos os filmes que estão em cartaz
   - [x] ao clicar em um filme, o usuário deve ser redirecionado para a página "/sessoes/(idFilme)", sendo (idFilme) o id do filme clicado, onde são exibidos os horários
   - [x] ao clicar em uma sessão, o usuário deve ser redirecionado para a rota "/assentos/(idSessao)", onde (dSessao) é o id da sessão escolhida, os assentos podem estar:
-      - indisponíveis
-      - disponíveis
+    - indisponíveis
+    - disponíveis
   - [x] quando for escolhido um assento disponível ele será selecionado, pode-se escolher mais de um
   - [x] não sendo obrigatório inserir o nome e cpf, poderá clicar em "Reservar assento(s)", o usuário será redirecionado para a rota "/sucesso". Isso fará com os assentos marcados fiquem indisponíveis para outras marcações.
   - [x] nesta tela poderá retornar para página inicial com a listagem de filmes
@@ -45,17 +45,20 @@ Nono projeto desenvolvido no curso de Full-Stack Developer na [Driven Education]
 
 O layout somente para Mobile da aplicação está disponível no Figma:
 
-<a href="https://www.figma.com/file/rc7ZTYfLZg9zpGahWB1aXb/Cineflex?node-id=3%3A4">
+<a href="https://www.figma.com/file/aFVjUNt5ucXZariczg8lqA/Cineflex?node-id=3%3A7">
 <img alt="Figma Driven Education" src="https://img.shields.io/badge/Acessar%20Layout%20-Figma-%2304D361">
 </a>
 
 ### Mobile
 
 <p align="center">
-  <img alt="Cineflex" title="#Cineflex" src="./src/img/tela1.jpg" width="200px">
-  <img alt="Cineflex" title="#Cineflex" src="./src/img/tela2.jpg" width="200px">
-  <img alt="Cineflex" title="#Cineflex" src="./src/img/tela3.jpg" width="200px">
- <img alt="Cineflex" title="#Cineflex" src="./src/img/tela4.jpg" width="200px" style="vertical-align: top">
+  <img alt="Cineflex" title="#Cineflex" src="./src/img/tela1.jpg" width="180px">
+  <img alt="Cineflex" title="#Cineflex" src="./src/img/tela2.jpg" width="180px">
+  <img alt="Cineflex" title="#Cineflex" src="./src/img/tela3.jpg" width="180px">
+ <img alt="Cineflex" title="#Cineflex" src="./src/img/tela4.jpg" width="180px" >
+</p>
+<p align="center">
+  <img src="./src/img/cineflex.gif" width="180px" />
 </p>
 
 ---
@@ -81,6 +84,7 @@ $ npm install
 $ npm run start
 # A aplicação será aberta na porta:3000 - acesse http://localhost:3000
 ```
+
 ---
 
 ## 🛠 Tecnologias
@@ -99,11 +103,9 @@ As seguintes ferramentas foram usadas na construção do projeto:
 
 ## 🧜‍♀️ Autora
 
-<a>
- <img style="border-radius: 50px;" src="https://avatars.githubusercontent.com/u/91642311?v=4" width="100px;" alt="foto"/>
- <br />
- <a href="https://www.linkedin.com/in/yaracristinatavares/" title="name">Yara Tavares 🚀</a>
- <br />
+<a href="https://www.linkedin.com/in/yaracristinatavares/" >
+ <img style="border-radius: 50%" src="https://avatars.githubusercontent.com/u/91642311?v=4" width="100px;" alt="foto"/>
+ <p>Yara Tavares 🚀</p>
 </a>
   
 ---
