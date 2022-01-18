@@ -51,15 +51,7 @@ O layout somente para Mobile da aplicação está disponível no Figma:
 
 ### Mobile
 
-<p align="center">
-  <img alt="Cineflex" title="#Cineflex" src="./src/img/tela1.jpg" width="180px">
-  <img alt="Cineflex" title="#Cineflex" src="./src/img/tela2.jpg" width="180px">
-  <img alt="Cineflex" title="#Cineflex" src="./src/img/tela3.jpg" width="180px">
- <img alt="Cineflex" title="#Cineflex" src="./src/img/tela4.jpg" width="180px" >
-</p>
-<p align="center">
-  <img src="./src/img/cineflex.gif" width="180px" />
-</p>
+  <img src="./src/img/cineflex.gif" width="200px" />
 
 ---
 
