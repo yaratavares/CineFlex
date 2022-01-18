@@ -44,6 +44,7 @@ Nono projeto desenvolvido no curso de Full-Stack Developer na [Driven Education]
 ## 🎨 Layout
 
 O layout somente para Mobile da aplicação está disponível no Figma:
+
 <a href="https://www.figma.com/file/rc7ZTYfLZg9zpGahWB1aXb/Cineflex?node-id=3%3A4">
 <img alt="Figma Driven Education" src="https://img.shields.io/badge/Acessar%20Layout%20-Figma-%2304D361">
 </a>
@@ -53,8 +54,8 @@ O layout somente para Mobile da aplicação está disponível no Figma:
 <p align="center">
   <img alt="Cineflex" title="#Cineflex" src="./src/img/tela1.jpg" width="200px">
   <img alt="Cineflex" title="#Cineflex" src="./src/img/tela2.jpg" width="200px">
-<img alt="Cineflex" title="#Cineflex" src="./src/img/tela3.jpg" width="200px">
- <img alt="Cineflex" title="#Cineflex" src="./src/img/tela4.jpg" width="200px">
+  <img alt="Cineflex" title="#Cineflex" src="./src/img/tela3.jpg" width="200px">
+ <img alt="Cineflex" title="#Cineflex" src="./src/img/tela4.jpg" width="200px" style="vertical-align: top">
 </p>
 
 ---
@@ -99,7 +100,7 @@ As seguintes ferramentas foram usadas na construção do projeto:
 ## 🧜‍♀️ Autora
 
 <a>
- <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/91642311?v=4" width="100px;" alt="foto"/>
+ <img style="border-radius: 50px;" src="https://avatars.githubusercontent.com/u/91642311?v=4" width="100px;" alt="foto"/>
  <br />
  <a href="https://www.linkedin.com/in/yaracristinatavares/" title="name">Yara Tavares 🚀</a>
  <br />
