@@ -24,6 +24,11 @@
 
 Nono projeto desenvolvido no curso de Full-Stack Developer na [Driven Education](https://www.driven.com.br/).
 
+Esse projeto foi atualizado para utilizar uma infra Terraform para deploy na AWS, seguindo a seguinte arquitetura:
+
+  <img src="./website/src/img/infra.png"/>
+
+
 ---
 
 ## ⚙️ Funcionalidades
@@ -51,7 +56,7 @@ O layout somente para Mobile da aplicação está disponível no Figma:
 
 ### Mobile
 
-  <img src="./src/img/cineflex.gif" width="200px" />
+  <img src="./website/src/img/cineflex.gif" width="200px" />
 
 ---
 
