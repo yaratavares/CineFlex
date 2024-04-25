@@ -91,6 +91,9 @@ As seguintes ferramentas foram usadas na construção do projeto:
 
 > Veja o arquivo [package.json](https://github.com/yaratavares/CineFlex/package.json)
 
+## Cloud Architecture
+ADD DIAGRAM PNG
+
 ---
 
 ## 🧜‍♀️ Autora
@@ -105,3 +108,5 @@ As seguintes ferramentas foram usadas na construção do projeto:
 ## 📝 Licença
 
 Este projeto esta sobe a licença [MIT](./LICENSE).
+
+aa
